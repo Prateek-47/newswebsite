@@ -1,0 +1,46 @@
+/* General Search Bar Styling */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fdfcfc;
+    padding: 5px;
+    
+    margin-top: -2px;
+    
+  }
+  /* Styling for the Input */
+.search-input {
+  --corners: 8px;
+  --border: 2px solid rgb(0, 0, 0);
+  --color: rgb(0, 0, 0);
+  
+  border: var(--border);
+  flex: 1;
+  padding: 9px;
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+  
+  
+  
+}
+
+
+/* Styling for the Search Button */
+.search-button {
+  --corners: 8px;
+  --color: rgb(255, 255, 255);
+  --background-color: #000000;
+ 
+  padding: 9px 20px;
+  background-color: var(--background-color);
+  color: white;
+  
+  cursor: pointer;
+  
+  
+  
+}
+
+/* Add Box-Shadow on Hover for Button */
+
+
+/* Add Box-Shadow on Focus */

@@ -1,0 +1,192 @@
+.a/* Article Grid Item */
+.article-grid-item {
+  padding: 1.5rem; /* Adjust padding for spacing */
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #000000;
+  height: auto; /* Automatically adjusts based on the content */
+  /* Smooth transition for shadow */
+}
+
+
+
+/* Ensure text doesn't overflow out of the article card */
+.article-grid-item h3 {
+  margin: 0 0 10px; /* Space between title and content */
+  font-size: 1.25rem; /* Adjust size of the title */
+  position: relative; /* To position the line under the title */
+  transition: color 0.3s ease; /* Smooth transition for title color */
+}
+
+.article-grid-item:hover h3 {
+  color: #000000; /* Optional: change title color on hover */
+}
+
+/* Line under the title on hover */
+.article-grid-item h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Position the line just below the title */
+  width: 0;
+  height: 2px;
+  background-color: #000; /* Line color */
+  transition: width 0.3s ease; /* Smooth transition for the line */
+}
+
+.article-grid-item:hover h3::after {
+  width: 100%; /* Line expands on hover */
+}
+
+/* Paragraph styling */
+.article-grid-item p {
+  margin: 10px 0; /* Add some spacing between paragraphs */
+  font-size: 1rem; /* Adjust the font size of the content */
+  line-height: 1.5; /* Improve readability */
+}
+
+/* Ensure images fit within the article card */
+.article-grid-item img {
+  max-width: 100%; /* Make sure the image doesn't overflow the card */
+  height: auto; /* Adjust height based on the image's aspect ratio */
+  margin-bottom: 10px; /* Space between the image and the text */
+}
+
+
+/* Modal background */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1000; /* Ensures it's on top of other elements */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7); /* Black with opacity for better contrast */
+  
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* Adjust the margin to make it more centered */
+  padding: 20px;
+  border-radius: 8px;
+  
+  width: 80%;
+  max-width: 700px; /* Limits the width on large screens */
+  
+}
+
+
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.load-more-button {
+  --color: rgb(0, 0, 0);
+  --background-color: #ffffff;
+  border-radius: 8px;
+  border: 2px solid var(--color);
+  background-color: var(--background-color);
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  cursor: pointer;
+  
+  /* Initial 3D shadow effect */
+  box-shadow: 
+      1px 1px 0px var(--color),
+      2px 2px 0px var(--color),
+      3px 3px 0px var(--color),
+      4px 4px 0px var(--color),
+      5px 5px 0px var(--color),
+      6px 6px 0px var(--color);
+  
+  /* Smooth transitions */
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+/* Add Box-Shadow on Hover */
+.load-more-button:hover {
+  box-shadow: 
+      1px 1px 0px var(--color),
+      2px 2px 0px var(--color),
+      3px 3px 0px var(--color);
+  
+  /* Simulates pressing effect */
+  transform: translateY(3px);
+}
+
+/* Optional: Add focus state */
+.load-more-button:focus {
+  outline: none;
+}
+/* Main Article Styling */
+.main-article h2 {
+  position: relative; /* Required for the ::after pseudo-element */
+  font-size: 1.5rem; /* Adjust the title size */
+  color: black;
+  margin: 0 0 10px;
+  transition: color 0.3s ease; /* Smooth transition for title color */
+}
+
+/* Line under the main article title on hover */
+.main-article h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Position the line just below the title */
+  width: 0;
+  height: 2px;
+  background-color: #000; /* Line color */
+  transition: width 0.3s ease; /* Smooth transition for the line */
+}
+
+.main-article:hover h2::after {
+  width: 100%; /* Line expands on hover */
+}
+
+.main-article:hover h2 {
+  color: #000000; /* Optional: change title color on hover */
+}
+/* Sidebar Article Title Styling */
+.article-grid-item ul li a {
+  position: relative;
+  font-size: 1rem; /* Adjust the size to fit the sidebar */
+  color: black;
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease; /* Smooth transition for the color */
+}
+
+/* Line under the article title on hover */
+.article-grid-item ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Position the line just below the title */
+  width: 0;
+  height: 2px;
+  background-color: #000; /* Line color */
+  transition: width 0.3s ease; /* Smooth transition for the line */
+}
+
+.article-grid-item ul li a:hover::after {
+  width: 100%; /* Line expands on hover */
+}
+
+.article-grid-item ul li a:hover {
+  color: #000; /* Optional: change title color on hover */
+}

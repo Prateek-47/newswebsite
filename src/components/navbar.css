@@ -1,0 +1,57 @@
+/* General Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    
+    background-color: #000000; /* Black background for the navbar */
+    color: #ffffff;
+    
+}
+
+/* Navbar Links Styling */
+.navbarlinks a {
+    --corners: 0px; /* Remove rounded corners */
+    --border: none; /* Remove border */
+    --color: #ffffff;
+    --text-color: #ffffff;
+    --hover-text-color: #000000; /* Hover will turn text black */
+
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0; /* Remove margin to align with top and bottom */
+    padding: 10px 20px; /* Add padding for spacing */
+    background-color: transparent;
+    display: inline-block;
+    font-weight: bold;
+    height: 100%; /* Ensure full height of navbar */
+
+    /* For pressable button effect */
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect for Navbar Links */
+.navbarlinks a:hover {
+    background-color: #ffffff; /* White background on hover */
+    color: var(--hover-text-color); /* Black text color on hover */
+    box-shadow: none; /* Remove box-shadow for a flat button look */
+}
+
+/* Active/Selected Link Effect */
+.navbarlinks a.active {
+    background-color: #ffffff; /* White background for selected link */
+    color: #000000; /* Black text color when selected */
+    box-shadow: none;
+}
+
+/* Adjust padding and other styling */
+.navbarlinks a {
+    padding: 10px 20px;
+    font-weight: bold;
+}
+.datetime {
+    color: #ffffff;
+    font-size: 1rem;
+    padding-right: 20px;
+    margin-top: 10px;
+  }
+  
