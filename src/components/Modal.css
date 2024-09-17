@@ -190,3 +190,49 @@
 .article-grid-item ul li a:hover {
   color: #000; /* Optional: change title color on hover */
 }
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  /* Article Grid Item */
+  .article-grid-item {
+    padding: 0px; /* Adjust padding for smaller screens */
+    border-radius: 6px; /* Slightly reduce border-radius */
+  }
+
+  /* Ensure text doesn't overflow out of the article card */
+  .article-grid-item h3 {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  /* Adjust spacing between paragraphs */
+  .article-grid-item p {
+    font-size: 0.875rem; /* Slightly smaller font size */
+  }
+
+  /* Ensure images fit within the article card */
+  .article-grid-item img {
+    max-width: 100%; /* Ensure images are responsive */
+    height: auto;
+  }
+
+  /* Modal Content */
+  .modal-content {
+    width: 90%; /* Adjust width for smaller screens */
+    max-width: 500px; /* Limit the maximum width */
+  }
+
+  /* Load More Button */
+  .load-more-button {
+    padding: 8px 16px; /* Adjust padding for mobile view */
+    font-size: 0.875rem; /* Slightly smaller font size */
+  }
+  
+  /* Main Article Styling */
+  .main-article h2 {
+    font-size: 1.25rem; /* Adjust title size for smaller screens */
+  }
+
+  /* Sidebar Article Title Styling */
+  .article-grid-item ul li a {
+    font-size: 0.875rem; /* Adjust size to fit the sidebar */
+  }
+}

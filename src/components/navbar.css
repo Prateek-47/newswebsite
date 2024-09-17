@@ -53,8 +53,14 @@
 /* Mobile View */
 @media (max-width: 768px) {
     .navbar {
-        overflow-x:auto ; /* Enable horizontal scrolling */
+        overflow-x:auto ;
+        overflow-y:hidden ;  /* Enable horizontal scrolling */
         white-space: nowrap; /* Prevent line breaks in navbar links */
+    }
+    .navbarlinks:hover {
+        background-color: #000000; /* White background on hover */
+        color:#ffffff; /* Black text color on hover */
+         /* Remove box-shadow for a flat button look */
     }
 
     .navbarlinks {

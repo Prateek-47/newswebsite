@@ -98,7 +98,7 @@ export default function ArticleGrid({ selectedCategory }) {
         <div
           className="main-article"
           onClick={() => openModal(mainArticle)}
-          style={{ padding: '20px', marginBottom: '20px', cursor: 'pointer' }}
+          style={{ padding: '10px', marginBottom: '20px', cursor: 'pointer' }}
         >
           <h2 style={{ cursor: 'pointer', color: 'black' }}>{mainArticle.title}</h2>
           {mainArticle.image_url && <img src={mainArticle.image_url} alt={mainArticle.title} style={{ width: '100%', height: 'auto' }} />}
@@ -108,7 +108,7 @@ export default function ArticleGrid({ selectedCategory }) {
       )}
 
       {/* Article Grid Section */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', cursor: 'pointer' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0px', cursor: 'pointer' }}>
         {articles.slice(0, visibleCount).map((article, index) => (
           <div key={index} className="article-grid-item" onClick={() => openModal(article)} style={{ padding: '10px' }}>
             <h3 style={{ cursor: 'pointer', color: 'black' }}>{article.title}</h3>

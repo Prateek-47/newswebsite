@@ -38,7 +38,7 @@ export default function App() {
       <TopBar />
       <Navbar onCategorySelect={setSelectedCategory} onSearch={handleSearch} />
 
-      <div style={{ display: 'flex', padding: '20px' }}>
+      <div style={{ display: 'flex', paddingTop: '10px' }}>
         <div style={{ flex: isMobile ? '1' : '2' }}>
           {/* Show loading screen or article grid based on loading state */}
           {isLoading ? (
