@@ -1,0 +1,55 @@
+/* General TopBar Styling */
+.topbar {
+    height: 50px;
+    background-color: #fff;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+/* Logo Styling */
+.logo {
+    margin-right: -0.5px;
+    transform: scale(0.4);
+}
+
+/* Website Name Styling */
+.website-name {
+    color: #000;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: auto; /* Pushes the date to the right */
+}
+
+/* Date Styling */
+.datetime {
+    font-weight: bold;
+    color: #000;
+    font-size: 16px;
+    padding-right: 20px;
+    margin-top: 1px;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .topbar {
+        /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the start of the flex container */
+        height: auto; /* Allow height to adjust automatically */
+        padding: 10px; /* Adjust padding for mobile view */
+    }
+    .logo{
+        transform: scale(0.5);
+    }
+    .website-name {
+        margin-right: 0;
+        margin-top: 25px; 
+        font-size: 35px;/* Remove margin-right in mobile view */
+    }
+
+    .datetime {
+        display: none; /* Remove padding-right */
+    }
+}

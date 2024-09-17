@@ -2,13 +2,16 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    
     background-color: #000000; /* Black background for the navbar */
     color: #ffffff;
-    
 }
 
 /* Navbar Links Styling */
+.navbarlinks {
+    display: flex;
+    flex-wrap: nowrap; /* Ensure links stay in a single row */
+}
+
 .navbarlinks a {
     --corners: 0px; /* Remove rounded corners */
     --border: none; /* Remove border */
@@ -24,8 +27,6 @@
     display: inline-block;
     font-weight: bold;
     height: 100%; /* Ensure full height of navbar */
-
-    /* For pressable button effect */
     transition: all 0.3s ease;
 }
 
@@ -48,10 +49,20 @@
     padding: 10px 20px;
     font-weight: bold;
 }
-.datetime {
-    color: #ffffff;
-    font-size: 1rem;
-    padding-right: 20px;
-    margin-top: 10px;
-  }
-  
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .navbar {
+        overflow-x:auto ; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent line breaks in navbar links */
+    }
+
+    .navbarlinks {
+        display: flex;
+        flex-wrap: nowrap; /* Ensure links stay in a single row */
+    }
+
+    .navbarlinks a {
+        flex-shrink: 0; /* Prevent items from shrinking */
+    }
+}

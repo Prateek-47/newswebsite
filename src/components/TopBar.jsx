@@ -1,5 +1,6 @@
 import { Mosaic } from "react-loading-indicators";
 import { useState, useEffect } from 'react';
+import './TopBar.css'; // Ensure you have a CSS file for styling
 
 export default function TopBar() {
   const [currentDate, setCurrentDate] = useState('');
@@ -40,20 +41,19 @@ export default function TopBar() {
   };
 
   return (
-    <div className='topbar' style={{height:'50px', backgroundColor: '#fff', padding: '5px 10px', textAlign: 'center', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
-      
+    <div className='topbar'>
       {/* Loading Component as Logo */}
-      <div className='logo' style={{ marginRight: '-0.5px', transform: 'scale(0.3)' }}> {/* Reduced size with transform */}
+      <div className='logo'>
         <Mosaic color='#000'/>
       </div>
 
       {/* Website Name */}
-      <div className='website-name' style={{ color:'#000', fontSize: '24px', fontWeight: 'bold' }}>
+      <div className='website-name'>
         PrimeHeadlines
       </div>
 
       {/* Current Date */}
-      <div className="datetime" style={{ fontWeight: 'bold',color:'#000', fontSize: '16px', paddingRight: '20px', marginTop: '1px' ,marginLeft: 'auto', }}>
+      <div className="datetime">
         {currentDate}
       </div>
     </div>
