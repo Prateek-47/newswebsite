@@ -1,29 +1,32 @@
 import { useState, useEffect } from 'react';
-import { database,ref, get, query, orderByChild, equalTo } from '../firebase'; // Adjust imports based on your Firebase config
-import './Modal.css';
-import SearchBar from './SearchBar'; // Import the SearchBar component
+import { database, ref, get } from '../../firebase'; // Import necessary Firebase modules and config
+import './Modal.css'; // Import CSS for modal styling
+import SearchBar from '../SearchBar/SearchBar'; // Import the SearchBar component
 
+// ArticleGrid Component
 export default function ArticleGrid({ selectedCategory }) {
-  const [articles, setArticles] = useState([]);
-  const [mainArticle, setMainArticle] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(6);
-  const [selectedArticle, setSelectedArticle] = useState(null); // For the modal
-  const [searchResults, setSearchResults] = useState([]); // For search results modal
-  const [showSearchModal, setShowSearchModal] = useState(false); // For controlling the search modal visibility
+  // State variables
+  const [articles, setArticles] = useState([]); // Holds all articles from Firebase
+  const [mainArticle, setMainArticle] = useState(null); // Main featured article
+  const [visibleCount, setVisibleCount] = useState(6); // How many articles are shown initially
+  const [selectedArticle, setSelectedArticle] = useState(null); // Holds the article for the modal view
+  const [searchResults, setSearchResults] = useState([]); // Holds search results
+  const [showSearchModal, setShowSearchModal] = useState(false); // Controls search modal visibility
 
+  // Fetch articles from Firebase on component mount or when the selected category changes
   useEffect(() => {
     const fetchArticlesFromFirebase = async () => {
       try {
-        // Reference to your articles collection in Firebase
-        const articlesRef = ref(database); // Access the root of the database
-        const snapshot = await get(articlesRef); // Fetch the data once
-        const data = snapshot.val();
-
+        // Reference to your Firebase database root
+        const articlesRef = ref(database);
+        // Get the data snapshot
+        const snapshot = await get(articlesRef);
+        
         if (snapshot.exists()) {
-          const data = snapshot.val();
+          const data = snapshot.val(); // Fetch data
           const articleArray = Object.values(data); // Convert object data to array
 
-          // Filter based on selected category
+          // Filter articles based on selected category
           const filteredArticles = articleArray.filter(article => {
             if (Array.isArray(article.category)) {
               return article.category.some(cat => cat.toLowerCase() === selectedCategory.toLowerCase());
@@ -31,8 +34,10 @@ export default function ArticleGrid({ selectedCategory }) {
             return false;
           });
 
+          // Update the articles state with filtered articles
           setArticles(filteredArticles);
 
+          // Randomly set one article as the main featured article
           if (filteredArticles.length > 0) {
             const randomArticle = filteredArticles[Math.floor(Math.random() * filteredArticles.length)];
             setMainArticle(randomArticle);
@@ -47,53 +52,59 @@ export default function ArticleGrid({ selectedCategory }) {
       }
     };
 
+    // Call the function to fetch articles
     fetchArticlesFromFirebase();
   }, [selectedCategory]);
 
-  // Handle search query and show the search results in a modal
+  // Handle search queries and display search results in a modal
   const handleSearch = (query) => {
-    const searchQuery = query.toLowerCase();
+    const searchQuery = query.toLowerCase(); // Convert query to lowercase for case-insensitive search
 
+    // Filter articles based on the query
     const filteredArticles = articles.filter(article => {
-      const title = article.title?.toLowerCase() || '';
-      const description = article.description?.toLowerCase() || '';
-      const content = article.content?.toLowerCase() || '';
+      const title = article.title?.toLowerCase() || ''; // Check if title exists, convert to lowercase
+      const description = article.description?.toLowerCase() || ''; // Check if description exists, convert to lowercase
+      const content = article.content?.toLowerCase() || ''; // Check if content exists, convert to lowercase
 
+      // Match query with article title, description, or content
       return title.includes(searchQuery) || description.includes(searchQuery) || content.includes(searchQuery);
     });
 
+    // If articles match the search, display results in a modal
     if (filteredArticles.length > 0) {
-      setSearchResults(filteredArticles);
-      setShowSearchModal(true); // Open the search results modal
+      setSearchResults(filteredArticles); // Update search results state
+      setShowSearchModal(true); // Show the search modal
     } else {
-      alert('No articles found for this search query.'); // You can replace this with any other feedback method
+      alert('No articles found for this search query.'); // Notify user if no results found
     }
   };
 
-  // Load more articles
+  // Load more articles (increase visible count by 8)
   const loadMore = () => {
     setVisibleCount(prevCount => prevCount + 8);
   };
 
-  // Modal handling
+  // Open the article modal when an article is clicked
   const openModal = (article) => {
     setSelectedArticle(article);
   };
 
+  // Close the article modal
   const closeModal = () => {
     setSelectedArticle(null);
   };
 
+  // Close the search results modal
   const closeSearchModal = () => {
     setShowSearchModal(false);
   };
 
   return (
     <div>
-      {/* Search Bar */}
+      {/* Search Bar Component */}
       <SearchBar onSearch={handleSearch} />
 
-      {/* Main Article Section */}
+      {/* Main Featured Article */}
       {mainArticle && (
         <div
           className="main-article"
@@ -107,7 +118,7 @@ export default function ArticleGrid({ selectedCategory }) {
         </div>
       )}
 
-      {/* Article Grid Section */}
+      {/* Article Grid - Display articles in a grid format */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0px', cursor: 'pointer' }}>
         {articles.slice(0, visibleCount).map((article, index) => (
           <div key={index} className="article-grid-item" onClick={() => openModal(article)} style={{ padding: '10px' }}>
@@ -119,7 +130,7 @@ export default function ArticleGrid({ selectedCategory }) {
         ))}
       </div>
 
-      {/* Load More Button */}
+      {/* Load More Button - Show if there are more articles to load */}
       {visibleCount < articles.length && (
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
           <button className="load-more-button" onClick={loadMore} style={{ padding: '10px 20px', cursor: 'pointer' }}>
@@ -128,7 +139,7 @@ export default function ArticleGrid({ selectedCategory }) {
         </div>
       )}
 
-      {/* Modal for Article Details */}
+      {/* Modal for Viewing Article Details */}
       {selectedArticle && (
         <div className="modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
